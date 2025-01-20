@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
@@ -80,6 +81,13 @@ Route::middleware(['checklogin'])->group(function () {
     Route::get('/barang-masuk/ubah/{id}', [BarangMasukController::class, 'edit'])->name('barang-masukEdit');
     Route::put('/barang-masuk/ubah/{id}', [BarangMasukController::class, 'update'])->name('barang-masukUpdate');
     Route::delete('/barang-masuk/hapus/{id}', [BarangMasukController::class, 'destroy'])->name('barang-masukDelete');
+
+    Route::get('/barang-keluar', [BarangKeluarController::class, 'index'])->name('barang-keluarPage');
+    Route::get('/barang-keluar/tambah', [BarangkeluarController::class, 'create'])->name('barang-keluarAdd');
+    Route::post('/barang-keluar/tambah', [BarangkeluarController::class, 'store'])->name('barang-keluarStore');
+    Route::get('/barang-keluar/ubah/{id}', [BarangkeluarController::class, 'edit'])->name('barang-keluarEdit');
+    Route::put('/barang-keluar/ubah/{id}', [BarangkeluarController::class, 'update'])->name('barang-keluarUpdate');
+    Route::delete('/barang-keluar/hapus/{id}', [BarangkeluarController::class, 'destroy'])->name('barang-keluarDelete');
 
     Route::get('/pembelian', [PembelianController::class, 'index'])->name('pembelianPage');
     Route::get('/pembelian/tambah', [PembelianController::class, 'create'])->name('pembelianAdd');

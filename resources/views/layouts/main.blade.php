@@ -110,7 +110,7 @@
                         </li>
 
                         <li
-                            class="sidebar-item {{request()->routeIs('barang-masukPage') ? 'active' : '' }} has-sub">
+                            class="sidebar-item {{request()->routeIs('barang-masukPage') || request()->routeIs('barang-keluarPage')? 'active' : '' }} has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-bag-fill"></i>
                                 <span>Inventaris</span>
@@ -125,7 +125,7 @@
 
 
                                 <li class="submenu-item">
-                                    <a href="" class="submenu-link">Barang Keluar</a>
+                                    <a href="{{Route('barang-keluarPage')}}" class="submenu-link">Barang Keluar</a>
 
                                 </li>
                             </ul>

@@ -84,20 +84,17 @@ class BarangMasukController extends Controller
     {
         //
         $barangmasuk = BarangMasuk::findOrfail($id);
-
-        $jumlahLama = $barangmasuk->jumlah;
-
-        // Ambil jumlah baru dari input request
-        $jumlahBaru = $request->jumlah;
-
-        // Hitung selisih jumlah yang perlu diubah
-        $selisihJumlah = $jumlahBaru - $jumlahLama;
-
-        // Ambil data barang terkait
         $barang = Barang::findOrFail($request->barang);
 
-        // Update jumlah barang di tabel barang
-        $barang->jumlah += $selisihJumlah;  // Tambah atau kurangi jumlah berdasarkan selisih
+        $barang->jumlah -= $barangmasuk->jumlah;  // Mengurangi stok barang dengan jumlah lama yang sudah tercatat
+
+        // Update jumlah barang masuk sesuai dengan yang baru
+        $barangmasuk->jumlah = $request->jumlah;  // Mengupdate jumlah barangmasuk dengan yang baru
+
+        // Tambahkan stok barang dengan jumlah yang baru
+        $barang->jumlah += $request->jumlah;  // Menambahkan stok barang dengan jumlah baru
+
+        // Simpan perubahan stok barang
         $barang->save();
         $barangmasuk->update([
             'barang_id' => $request->barang,
@@ -117,8 +114,19 @@ class BarangMasukController extends Controller
     public function destroy(string $id)
     {
         //
-        $barangmasuk = BarangMasuk::findOrFail($id);
-        $barangmasuk->delete();
+        $barangMasuk = BarangMasuk::findOrFail($id);
+
+        // Ambil data barang terkait
+        $barang = Barang::findOrFail($barangMasuk->barang_id);
+
+        // Mengembalikan stok barang dengan mengurangi jumlah barang masuk
+        $barang->jumlah -= $barangMasuk->jumlah;
+
+        // Simpan perubahan stok barang
+        $barang->save();
+
+        // Hapus data barang masuk
+        $barangMasuk->delete();
         return redirect()->route('barang-masukPage')->with('success', 'Data berhasil dihapus!');
     }
 }
