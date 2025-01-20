@@ -106,9 +106,9 @@
                 </div>
             </div>
             <div class="catatan">
-                <p>Banjarmasin, <?= date('d M Y') ?></p>
-                <img class="logo-left" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/static/images/logo/via.png'))) }}" alt="logo" width="15%">
-                <p>PT. Via Digital Indonesia</p>
+                <p style="margin-bottom: 100px;">PT. Via Digital Indonesia</p>
+                <p>M. Nicko Farizki</p>
+                <p>Direktur</p>
             </div>
         </section>
     </div>

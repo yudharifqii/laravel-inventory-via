@@ -103,6 +103,7 @@ Route::middleware(['checklogin'])->group(function () {
     Route::middleware(['checkrole'])->group(function () {
         Route::get('/laporanbarang', [LaporanController::class, 'laporanbarang'])->name('laporanBarang');
         Route::get('/laporanbarangmasuk', [LaporanController::class, 'laporanbarangmasuk'])->name('laporanBarangMasuk');
+        Route::get('/laporanbarangkeluar', [LaporanController::class, 'laporanbarangkeluar'])->name('laporanBarangKeluar');
         Route::get('/laporanrekapitulasi', [LaporanController::class, 'laporanrekapitulasi'])->name('laporanRekapitulasi');
         Route::get('/laporanpembelian', [LaporanController::class, 'laporanpembelian'])->name('laporanPembelian');
 

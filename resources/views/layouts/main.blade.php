@@ -161,6 +161,10 @@
 
                                 </li>
                                 <li class="submenu-item  ">
+                                    <a href="{{Route('laporanBarangKeluar')}}" target="_blank" class="submenu-link">Barang Keluar</a>
+
+                                </li>
+                                <li class="submenu-item  ">
                                     <a href="{{Route('laporanRekapitulasi')}}" target="_blank" class="submenu-link">Rekapitulasi</a>
 
                                 </li>

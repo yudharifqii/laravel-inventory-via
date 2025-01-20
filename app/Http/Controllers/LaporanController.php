@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\BarangKeluar;
 use App\Models\BarangMasuk;
 use App\Models\Kategori;
 use App\Models\Pemasok;
@@ -18,7 +19,7 @@ class LaporanController extends Controller
     //
     public function laporanbarang()
     {
-        $barang = Barang::with('kategori', 'satuan')->latest()->get();
+        $barang = Barang::with('kategori')->latest()->get();
 
         $cetak = view('barang.cetak', compact('barang'));
 
@@ -40,7 +41,7 @@ class LaporanController extends Controller
 
     public function laporanbarangmasuk()
     {
-        $barangmasuk = BarangMasuk::with('barang')->latest()->get();
+        $barangmasuk = BarangMasuk::with('barang', 'satuan')->latest()->get();
 
         $cetak = view('barangmasuk.cetak', compact('barangmasuk'));
 
@@ -58,6 +59,28 @@ class LaporanController extends Controller
 
         // Output PDF to browser
         return $dompdf->stream('Laporan Data Barang Masuk.pdf', $options);
+    }
+
+    public function laporanbarangkeluar()
+    {
+        $barangkeluar = BarangKeluar::with('barang', 'satuan')->latest()->get();
+
+        $cetak = view('barangkeluar.cetak', compact('barangkeluar'));
+
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($cetak->render());
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render PDF (important step!)
+        $dompdf->render();
+
+        $options = array(
+            'Attachment' => false
+        );
+
+        // Output PDF to browser
+        return $dompdf->stream('Laporan Data Barang Keluar.pdf', $options);
     }
 
     public function laporanpemasok()

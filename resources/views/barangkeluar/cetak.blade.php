@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Laporan Data Barang</title>
+    <title>Laporan Data Barang Keluar</title>
 
 
     <style>
@@ -73,7 +73,7 @@
 
     <!-- Judul Laporan -->
     <div class="page-heading">
-        <h3 style="text-align: center;">Laporan Data Barang</h3>
+        <h3 style="text-align: center;">Laporan Data Barang Keluar</h3>
     </div>
 
     <!-- Konten Laporan -->
@@ -87,18 +87,20 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Barang</th>
+                                <th>Tanggal Barang Keluar</th>
                                 <th>Jumlah</th>
-                                <th>Kategori</th>
+                                <th>Satuan</th>
                                 <th>Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($barang as $data)
+                            @foreach($barangkeluar as $data)
                             <tr>
                                 <td class="text-bold-500">{{$loop->iteration}}</td>
-                                <td class="text-bold-500">{{$data->nama}}</td>
+                                <td class="text-bold-500">{{$data->barang->nama ?? 'Data Sudah Dihapus'}}</td>
+                                <td class="text-bold-500">{{ date('d M Y', strtotime($data->tanggal_barang_keluar)) }}</td>
                                 <td class="text-bold-500">{{$data->jumlah}}</td>
-                                <td class="text-bold-500">{{$data->kategori->nama_kategori ?? 'Data Sudah Dihapus'}}</td>
+                                <td class="text-bold-500">{{$data->satuan->satuan ?? 'Data Sudah Dihapus'}}</td>
                                 <td class="text-bold-500">{{$data->keterangan}}</td>
                             </tr>
                             @endforeach

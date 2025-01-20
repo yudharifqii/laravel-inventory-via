@@ -101,17 +101,15 @@
                         <thead>
                             <tr>
                                 <th>Nama Barang</th>
+                                <th>Kategori</th>
                                 <th>Jumlah</th>
-                                <th>Harga Satuan</th>
-                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td class="text-bold-500">{{$pembelian->nama_barang}}</td>
+                                <td class="text-bold-500">{{$pembelian->kategori->nama_kategori ?? 'Data Sudah Dihapus'}}</td>
                                 <td class="text-bold-500">{{$pembelian->jumlah}}</td>
-                                <td class="text-bold-500">Rp. {{number_format($pembelian->harga_satuan, 2)}}</td>
-                                <td class="text-bold-500">Rp. {{number_format($pembelian->total, 2)}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -120,9 +118,9 @@
 
             <p style="margin-top: 0px; line-height: 2; text-align: justify;">Demikian surat pengadaan ini kami buat dengan harapan agar dapat diproses secepatnya. Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.</p>
             <div class="catatan">
-                <p>Hormat Kami,</p>
-                <img class="logo-left" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/static/images/logo/via.png'))) }}" alt="logo" width="15%">
-                <p>PT. Via Digital Indonesia</p>
+                <p style="margin-bottom: 100px;">PT. Via Digital Indonesia</p>
+                <p>M. Nicko Farizki</p>
+                <p>Direktur</p>
             </div>
         </section>
     </div>
