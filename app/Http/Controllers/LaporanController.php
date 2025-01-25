@@ -21,88 +21,21 @@ class LaporanController extends Controller
     {
         $barang = Barang::with('kategori')->latest()->get();
 
-        $cetak = view('barang.cetak', compact('barang'));
-
-        $dompdf = new Dompdf();
-
-        $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render PDF (important step!)
-        $dompdf->render();
-
-        $options = array(
-            'Attachment' => false
-        );
-
-        // Output PDF to browser
-        return $dompdf->stream('Laporan Data Barang.pdf', $options);
+        return view('barang.laporan', compact('barang'));
     }
 
     public function laporanbarangmasuk()
     {
         $barangmasuk = BarangMasuk::with('barang', 'satuan')->latest()->get();
 
-        $cetak = view('barangmasuk.cetak', compact('barangmasuk'));
-
-        $dompdf = new Dompdf();
-
-        $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render PDF (important step!)
-        $dompdf->render();
-
-        $options = array(
-            'Attachment' => false
-        );
-
-        // Output PDF to browser
-        return $dompdf->stream('Laporan Data Barang Masuk.pdf', $options);
+        return view('barangmasuk.laporan', compact('barangmasuk'));
     }
 
     public function laporanbarangkeluar()
     {
         $barangkeluar = BarangKeluar::with('barang', 'satuan')->latest()->get();
 
-        $cetak = view('barangkeluar.cetak', compact('barangkeluar'));
-
-        $dompdf = new Dompdf();
-
-        $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render PDF (important step!)
-        $dompdf->render();
-
-        $options = array(
-            'Attachment' => false
-        );
-
-        // Output PDF to browser
-        return $dompdf->stream('Laporan Data Barang Keluar.pdf', $options);
-    }
-
-    public function laporanpemasok()
-    {
-        $pemasok = Pemasok::latest()->get();
-
-        $cetak = view('pemasok.cetak', compact('pemasok'));
-
-        $dompdf = new Dompdf();
-
-        $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render PDF (important step!)
-        $dompdf->render();
-
-        $options = array(
-            'Attachment' => false
-        );
-
-        // Output PDF to browser
-        return $dompdf->stream('Laporan Data Pemasok.pdf', $options);
+        return view('barangkeluar.laporan', compact('barangkeluar'));
     }
 
     public function laporanrekapitulasi()
@@ -117,43 +50,13 @@ class LaporanController extends Controller
             }, 'total_jumlah_barang')
             ->get();
 
-        $cetak = view('barang.rekap', compact('rekap', 'totalitem'));
-
-        $dompdf = new Dompdf();
-
-        $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render PDF (important step!)
-        $dompdf->render();
-
-        $options = array(
-            'Attachment' => false
-        );
-
-        // Output PDF to browser
-        return $dompdf->stream('Laporan Rekapitulasi Barang.pdf', $options);
+        return view('barang.laporanrekap', compact('rekap', 'totalitem'));
     }
 
     public function laporanpembelian()
     {
 
         $pembelian = pembelian::with('pemasok', 'kategori', 'penanggungjawab')->latest()->get();
-        $cetak = view('pembelian.cetak', compact('pembelian'));
-
-        $dompdf = new Dompdf();
-
-        $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render PDF (important step!)
-        $dompdf->render();
-
-        $options = array(
-            'Attachment' => false
-        );
-
-        // Output PDF to browser
-        return $dompdf->stream('Laporan Data Pembelian.pdf', $options);
+        return view('pembelian.laporan', compact('pembelian'));
     }
 }

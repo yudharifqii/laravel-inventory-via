@@ -144,7 +144,7 @@
                             </ul>
                         </li>
                         <li
-                            class="sidebar-item has-sub">
+                            class="sidebar-item {{request()->routeIs('laporanBarang') || request()->routeIs('laporanBarangMasuk') || request()->routeIs('laporanBarangKeluar') || request()->routeIs('laporanRekapitulasi') || request()->routeIs('laporanPembelian') ? 'active' : '' }} has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-printer-fill"></i>
                                 <span>Laporan</span>
@@ -152,24 +152,24 @@
 
                             <ul class="submenu ">
 
-                                <li class="submenu-item  ">
-                                    <a href="{{Route('laporanBarang')}}" target="_blank" class="submenu-link">Barang</a>
+                                <li class="submenu-item  {{ request()->routeIs('laporanBarang') ? 'active' : '' }}">
+                                    <a href="{{Route('laporanBarang')}}" class="submenu-link">Barang</a>
 
                                 </li>
-                                <li class="submenu-item  ">
-                                    <a href="{{Route('laporanBarangMasuk')}}" target="_blank" class="submenu-link">Barang Masuk</a>
+                                <li class="submenu-item  {{ request()->routeIs('laporanBarangMasuk') ? 'active' : '' }}">
+                                    <a href="{{Route('laporanBarangMasuk')}}" class="submenu-link">Barang Masuk</a>
 
                                 </li>
-                                <li class="submenu-item  ">
-                                    <a href="{{Route('laporanBarangKeluar')}}" target="_blank" class="submenu-link">Barang Keluar</a>
+                                <li class="submenu-item  {{ request()->routeIs('laporanBarangKeluar') ? 'active' : '' }}">
+                                    <a href="{{Route('laporanBarangKeluar')}}" class="submenu-link">Barang Keluar</a>
 
                                 </li>
-                                <li class="submenu-item  ">
-                                    <a href="{{Route('laporanRekapitulasi')}}" target="_blank" class="submenu-link">Rekapitulasi</a>
+                                <li class="submenu-item  {{ request()->routeIs('laporanRekapitulasi') ? 'active' : '' }}">
+                                    <a href="{{Route('laporanRekapitulasi')}}" class="submenu-link">Rekapitulasi</a>
 
                                 </li>
-                                <li class="submenu-item  ">
-                                    <a href="{{Route('laporanPembelian')}}" target="_blank" class="submenu-link">Pembelian</a>
+                                <li class="submenu-item  {{ request()->routeIs('laporanPembelian') ? 'active' : '' }}">
+                                    <a href="{{Route('laporanPembelian')}}" class="submenu-link">Pembelian</a>
                                 </li>
                             </ul>
                         </li>
@@ -198,7 +198,7 @@
                             </a>
                         </li>
                         <li
-                            class="sidebar-item {{ request()->routeIs('barangPage') || request()->routeIs('kategoriPage') || request()->routeIs('pemasokPage') || request()->routeIs('penanggungjawabPage') ? 'active' : '' }} has-sub">
+                            class="sidebar-item {{ request()->routeIs('barangPage') || request()->routeIs('kategoriPage') || request()->routeIs('pemasokPage') || request()->routeIs('penanggungjawabPage') || request()->routeIs('satuanPage') ? 'active' : '' }} has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-database-fill"></i>
                                 <span>Data Master</span>
@@ -216,12 +216,37 @@
                                     <a href="{{Route('kategoriPage')}}" class="submenu-link">Kategori</a>
 
                                 </li>
+                                <li class="submenu-item  {{ request()->routeIs('satuanPage') ? 'active' : '' }}">
+                                    <a href="{{Route('satuanPage')}}" class="submenu-link">Satuan</a>
+
+                                </li>
                                 <li class="submenu-item  {{ request()->routeIs('pemasokPage') ? 'active' : '' }}">
                                     <a href="{{Route('pemasokPage')}}" class="submenu-link">Pemasok</a>
 
                                 </li>
                                 <li class="submenu-item  {{ request()->routeIs('penanggungjawabPage') ? 'active' : '' }}">
                                     <a href="{{Route('penanggungjawabPage')}}" class="submenu-link">Penanggung Jawab</a>
+
+                                </li>
+                            </ul>
+                        </li>
+                        <li
+                            class="sidebar-item {{request()->routeIs('barang-masukPage') || request()->routeIs('barang-keluarPage')? 'active' : '' }} has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-bag-fill"></i>
+                                <span>Inventaris</span>
+                            </a>
+
+                            <ul class="submenu ">
+
+                                <li class="submenu-item {{ request()->routeIs('barang-masukPage') ? 'active' : '' }}">
+                                    <a href="{{Route('barang-masukPage')}}" class="submenu-link">Barang Masuk</a>
+
+                                </li>
+
+
+                                <li class="submenu-item">
+                                    <a href="{{Route('barang-keluarPage')}}" class="submenu-link">Barang Keluar</a>
 
                                 </li>
                             </ul>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
+use App\Http\Controllers\CetakController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LaporanController;
@@ -101,11 +102,17 @@ Route::middleware(['checklogin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profilePage');
 
     Route::middleware(['checkrole'])->group(function () {
-        Route::get('/laporanbarang', [LaporanController::class, 'laporanbarang'])->name('laporanBarang');
-        Route::get('/laporanbarangmasuk', [LaporanController::class, 'laporanbarangmasuk'])->name('laporanBarangMasuk');
-        Route::get('/laporanbarangkeluar', [LaporanController::class, 'laporanbarangkeluar'])->name('laporanBarangKeluar');
-        Route::get('/laporanrekapitulasi', [LaporanController::class, 'laporanrekapitulasi'])->name('laporanRekapitulasi');
-        Route::get('/laporanpembelian', [LaporanController::class, 'laporanpembelian'])->name('laporanPembelian');
+        Route::get('/laporan-barang', [LaporanController::class, 'laporanbarang'])->name('laporanBarang');
+        Route::get('/laporan-barang-masuk', [LaporanController::class, 'laporanbarangmasuk'])->name('laporanBarangMasuk');
+        Route::get('/laporan-barang-keluar', [LaporanController::class, 'laporanbarangkeluar'])->name('laporanBarangKeluar');
+        Route::get('/laporan-rekapitulasi', [LaporanController::class, 'laporanrekapitulasi'])->name('laporanRekapitulasi');
+        Route::get('/laporan-pembelian', [LaporanController::class, 'laporanpembelian'])->name('laporanPembelian');
+
+        Route::get('/cetak-barang', [CetakController::class, 'cetakbarang'])->name('cetakBarang');
+        Route::get('/cetak-barang-masuk', [cetakController::class, 'cetakbarangmasuk'])->name('cetakBarangMasuk');
+        Route::get('/cetak-barang-keluar', [cetakController::class, 'cetakbarangkeluar'])->name('cetakBarangKeluar');
+        Route::get('/cetak-rekapitulasi', [cetakController::class, 'cetakrekapitulasi'])->name('cetakRekapitulasi');
+        Route::get('/cetak-pembelian', [cetakController::class, 'cetakpembelian'])->name('cetakPembelian');
 
         Route::get('/user', [UserController::class, 'index'])->name('userPage');
         Route::get('/user/tambah', [userController::class, 'create'])->name('userAdd');
