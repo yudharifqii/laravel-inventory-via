@@ -25,7 +25,7 @@ class CetakController extends Controller
         $dompdf = new Dompdf();
 
         $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper('A4', 'landscape');
 
         // Render PDF (important step!)
         $dompdf->render();
@@ -47,7 +47,7 @@ class CetakController extends Controller
         $dompdf = new Dompdf();
 
         $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper('A4', 'landscape');
 
         // Render PDF (important step!)
         $dompdf->render();
@@ -69,7 +69,7 @@ class CetakController extends Controller
         $dompdf = new Dompdf();
 
         $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper('A4', 'landscape');
 
         // Render PDF (important step!)
         $dompdf->render();
@@ -99,7 +99,7 @@ class CetakController extends Controller
         $dompdf = new Dompdf();
 
         $dompdf->loadHtml($cetak->render());
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper('A4', 'landscape');
 
         // Render PDF (important step!)
         $dompdf->render();

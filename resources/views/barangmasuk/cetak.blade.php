@@ -14,7 +14,7 @@
         }
 
         .kop-surat {
-            text-align: left;
+            text-align: center;
             justify-content: center;
         }
 
@@ -64,7 +64,7 @@
         <div class="row">
             <div class="col">
                 <div class="text-content">
-                    <img class="logo-left" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/static/images/logo/kop.png'))) }}" alt="logo" width="100%">
+                    <img class="logo-left" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/assets/static/images/logo/kop.png'))) }}" alt="logo" width="75%" height="15%">
                 </div>
             </div>
         </div>
