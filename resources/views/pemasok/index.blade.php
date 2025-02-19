@@ -7,11 +7,13 @@
 <div class="page-content">
     <section class="row">
         <div class="col-12 col-md-12">
+            @if(Auth::user()->role == 'User')
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <a href="{{Route('pemasokAdd')}}" class="btn icon icon-left btn-success mb-3"><i data-feather="edit-2"></i> Tambah Data Pemasok</a>
                 </div>
             </div>
+            @endif
             @if (session('success'))
             <div class="alert alert-success"><i class="bi bi-check-circle"></i> {{ session('success') }}</div>
             @endif
@@ -26,7 +28,9 @@
                                         <th>Nama</th>
                                         <th>Email</th>
                                         <th>Telepon</th>
+                                        @if(Auth::user()->role == 'User')
                                         <th>Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,6 +40,7 @@
                                         <td class="text-bold-500">{{$data->email}}</td>
                                         <td class="text-bold-500">{{$data->telepon}}</td>
                                         <td class="text-bold-500">
+                                            @if(Auth::user()->role == 'User')
                                             <form action="{{Route('pemasokDelete', $data->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
@@ -43,6 +48,7 @@
                                                 <a href="{{Route('pemasokDetail', $data->id)}}" class="btn icon btn-warning"><i class="bi bi-info-circle"></i></a>
                                                 <button type="submit" class="btn icon btn-danger"><i class="bi bi-trash"></i></button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

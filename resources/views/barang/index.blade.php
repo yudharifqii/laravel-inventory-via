@@ -7,11 +7,13 @@
 <div class="page-content">
     <section class="row">
         <div class="col-12 col-md-12">
+            @if(Auth::user()->role == 'User')
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <a href="{{Route('barangAdd')}}" class="btn icon icon-left btn-success mb-3"><i data-feather="edit-2"></i> Tambah Data Barang</a>
                 </div>
             </div>
+            @endif
             @if (session('success'))
             <div class="alert alert-success"><i class="bi bi-check-circle"></i> {{ session('success') }}</div>
             @endif
@@ -26,7 +28,9 @@
                                         <th>Nama Barang</th>
                                         <th>Kategori</th>
                                         <th>Jumlah</th>
+                                        @if(Auth::user()->role == 'User')
                                         <th>Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,6 +39,7 @@
                                         <td class="text-bold-500">{{$data->nama}}</td>
                                         <td class="text-bold-500"><span class="badge bg-success">{{$data->kategori->nama_kategori ?? 'Data Sudah Dihapus'}}</span></td>
                                         <td class="text-bold-500">{{$data->jumlah}}</td>
+                                        @if(Auth::user()->role == 'User')
                                         <td class="text-bold-500">
                                             <form action="{{Route('barangDelete', $data->id)}}" method="post">
                                                 @csrf
@@ -44,6 +49,7 @@
                                                 <button type="submit" class="btn icon btn-danger"><i class="bi bi-trash"></i></button>
                                             </form>
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>

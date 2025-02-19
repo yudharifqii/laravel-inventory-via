@@ -7,11 +7,13 @@
 <div class="page-content">
     <section class="row">
         <div class="col-12 col-md-12">
+            @if(Auth::user()->role == 'User')
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <a href="{{Route('pembelianAdd')}}" class="btn icon icon-left btn-success mb-3"><i data-feather="edit-2"></i> Tambah Data Pembelian</a>
                 </div>
             </div>
+            @endif
             @if (session('success'))
             <div class="alert alert-success"><i class="bi bi-check-circle"></i> {{ session('success') }}</div>
             @endif

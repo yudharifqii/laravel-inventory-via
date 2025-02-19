@@ -48,7 +48,6 @@
                                             <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
-
                                         <div class="form-group">
                                             <label for="keterangan" class="form-label">Keterangan</label>
                                             <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
