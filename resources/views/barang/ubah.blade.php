@@ -25,7 +25,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="jumlah">Jumlah</label>
-                                            <input type="text" class="form-control" id="jumlah" name="jumlah" autocomplete="off" value="{{ $barang->jumlah}}">
+                                            <input type="text" class="form-control" id="jumlah" name="jumlah" autocomplete="off" readonly value="{{ $barang->jumlah}}">
                                             @error('jumlah')
                                             <p class="text-danger">{{ $message }}</p>
                                             @enderror

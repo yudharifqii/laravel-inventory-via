@@ -22,10 +22,6 @@
                                         <td class="text-bold-500">: {{$detail->jumlah}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Satuan</th>
-                                        <td class="text-bold-500">: {{$detail->satuan->satuan ?? 'Data Sudah Dihapus'}}</td>
-                                    </tr>
-                                    <tr>
                                         <th>Kategori</th>
                                         <td class="text-bold-500">: {{$detail->kategori->nama_kategori ?? 'Data Sudah Dihapus'}}</td>
                                     </tr>
